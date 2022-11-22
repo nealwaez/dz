@@ -1,0 +1,107 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+from tkinter import *
+from random import *
+
+points_b1 = 0
+points_b2 = 0
+points = 0
+
+def but_change(b):
+
+
+    b['text'] = 'Ну пожалуйста'
+b['bg'] = 'blue'
+b['fg'] = 'white'
+
+points_b1, points_b2 = 0, 0
+
+def points_update():
+ global points
+points += 1
+label['text'] = f'Ваши очки: {points}'
+
+def b1_func():
+ points_update()
+
+b1.place(x=randint(1, 500), y=randint(1, 550))
+
+global points_b1
+global points_b2
+points_b1 += 1
+points_b2 -= points_b2
+
+if points_b1 >= 10:
+ but_change(b2)
+else:
+ b1['text'] = '>НАЖМИ<'
+b1['bg'] = 'green'
+b1['fg'] = 'black'
+
+def b2_func():
+ points_update()
+
+b2.place(x=randint(1, 500), y=randint(1, 550))
+
+global points_b1
+global points_b2
+points_b2 += 1
+points_b1 -= points_b1
+
+if points_b2 >= 10:
+ but_change(b1)
+else:
+ b2['text'] = '>ТРОНЬ<'
+b2['bg'] = 'yellow'
+b2['fg'] = 'black'
+
+
+win = Tk()
+win.geometry('800x600+250+80')
+win.title('Кликер :D')
+
+b1 = Button(text='>НАЖМИ<', font=('Calibri', 15), bg='green', command=b1_func)
+b2 = Button(text='>ТРОНЬ<', font=('Calibri', 15), bg='yellow', command=b2_func)
+
+b1.place(x=150, y=200)
+b2.place(x=450, y=200)
+
+label = Label(text=f'Ваши очки: {points}', fg='black', font=('Calibri', 10))
+label.place(x=10, y=10)
+
+
+win.mainloop()
